@@ -23,4 +23,5 @@ A multi-line text field (auto-grows) with a hand-drawn, wireframe like, style.
 ```html
 <wired-textarea placeholder="placeholder"></wired-textarea>
 <wired-textarea placeholder="Enter text" rows="3"></wired-textarea>
+<wired-textarea disabled placeholder="disabled" rows="2"></wired-textarea>
 ```

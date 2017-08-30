@@ -13,6 +13,16 @@
         -webkit-appearance: textarea;
       }
 
+       :host(.disabled) {
+        opacity: 0.6 !important;
+        cursor: default;
+        pointer-events: none;
+      }
+
+       :host(.disabled) svg {
+        background: rgba(0, 0, 0, 0.07);
+      }
+
       .fit {
         position: absolute;
         top: 0;
@@ -112,6 +122,11 @@
           },
           maxlength: {
             type: Number
+          },
+          disabled: {
+            type: Boolean,
+            value: false,
+            observer: '_onDisableChange'
           }
         }
       }
@@ -171,7 +186,7 @@
         this.style.opacity = 0;
         Polymer.RenderStatus.beforeNextRender(this, () => {
           setTimeout(() => {
-            this.relayout();
+            this._relayout();
             this.style.opacity = 1;
           }, 150);
         });
@@ -186,17 +201,25 @@
       _needsLayout() {
         var s = this.getBoundingClientRect();
         if (s.height != this._prevHeight) {
-          this.relayout();
+          this._relayout();
         }
       }
 
-      relayout() {
+      _relayout() {
         this._clearNode(this.$.svg);
         var s = this.getBoundingClientRect();
         this.$.svg.setAttribute("width", s.width);
         this.$.svg.setAttribute("height", s.height);
         this._prevHeight = s.height;
         _WIRES_.rectangle(this.$.svg, 0, 0, s.width, s.height);
+      }
+
+      _onDisableChange() {
+        if (this.disabled) {
+          this.classList.add("disabled");
+        } else {
+          this.classList.remove("disabled");
+        }
       }
     }
 
