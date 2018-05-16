@@ -30,6 +30,6 @@
   "homepage": "https://github.com/wiredjs/wired-textarea#readme",
   "dependencies": {
     "@polymer/lit-element": "^0.5.1",
-    "wired-lib": "^0.5.0"
+    "wired-lib": "^0.5.1"
   }
 }
