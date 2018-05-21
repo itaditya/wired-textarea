@@ -1,5 +1,3 @@
-![wired textarea](https://wiredjs.github.io/wired-elements/images/textarea.png)
-
 # wired-textarea
 Hand-drawn sketchy textarea web component.
 
@@ -15,7 +13,7 @@ npm i wired-textarea
 ```
 Import wired-textarea definition into your HTML page:
 ```html
-<script type="module" src="wired-radio/wired-textarea.js"></script>
+<script type="module" src="wired-textarea/wired-textarea.js"></script>
 ```
 Or into your module script:
 ```javascript
