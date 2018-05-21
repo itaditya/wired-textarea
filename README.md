@@ -34,5 +34,6 @@ Use it in your web page:
 **value** - Text value.
 
 **disabled** - Disabled the control.
+
 **placeholder** - Placeholder text for the input.
 
