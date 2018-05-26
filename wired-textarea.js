@@ -23,13 +23,12 @@ export class WiredTextarea extends LitElement {
     this.disabled = false;
     this.rows = 1;
     this.maxrows = 0;
-    this.autocomplete = 'off';
-    this.autofocus = false;
-    this.classList.add('pending');
   }
 
   _createRoot() {
-    return this.attachShadow({ mode: 'open', delegatesFocus: true });
+    const root = this.attachShadow({ mode: 'open', delegatesFocus: true });
+    this.classList.add('pending');
+    return root;
   }
 
   _render({ rows, maxrows, autocomplete, autofocus, inputmode, placeholder, readonly, required, minlength, maxlength, disabled }) {
