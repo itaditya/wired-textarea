@@ -45,21 +45,21 @@ export class WiredTextarea extends LitElement {
         -webkit-appearance: textarea;
         outline: none;
       }
-    
+
       :host(.pending) {
         opacity: 0;
       }
-    
+
       :host(.disabled) {
         opacity: 0.6 !important;
         cursor: default;
         pointer-events: none;
       }
-    
+
       :host(.disabled) svg {
         background: rgba(0, 0, 0, 0.07);
       }
-    
+
       .fit {
         position: absolute;
         top: 0;
@@ -67,26 +67,26 @@ export class WiredTextarea extends LitElement {
         right: 0;
         bottom: 0;
       }
-    
+
       .overlay {
         pointer-events: none;
       }
-    
+
       svg {
         display: block;
       }
-    
+
       path {
         stroke: currentColor;
         stroke-width: 0.7;
         fill: transparent;
       }
-    
+
       .mirror-text {
         visibility: hidden;
         word-wrap: break-word;
       }
-    
+
       textarea {
         position: relative;
         outline: none;
@@ -198,13 +198,18 @@ export class WiredTextarea extends LitElement {
   }
 
   _didRender() {
-    const svg = this.shadowRoot.getElementById('svg');
-    this._clearNode(svg);
     const s = this.getBoundingClientRect();
-    svg.setAttribute("width", s.width);
-    svg.setAttribute("height", s.height);
-    this._prevHeight = s.height;
-    wired.rectangle(svg, 2, 2, s.width - 2, s.height - 2);
+    const svg = this.shadowRoot.getElementById('svg');
+
+    if (this._prevHeight !== s.height) {
+      this._clearNode(svg);
+      svg.setAttribute('width', s.width);
+      svg.setAttribute('height', s.height);
+      wired.rectangle(svg, 2, 2, s.width - 2, s.height - 2);
+
+      this._prevHeight = s.height;
+    }
+
     this.classList.remove('pending');
     this._updateCached();
   }
