@@ -88,6 +88,7 @@ export class WiredTextarea extends LitElement {
       }
 
       textarea {
+        box-sizing: border-box;
         position: relative;
         outline: none;
         border: none;
@@ -101,6 +102,7 @@ export class WiredTextarea extends LitElement {
         line-height: inherit;
         text-align: inherit;
         padding: 5px;
+        padding-left: 10px;
       }
     </style>
     <div id="mirror" class="mirror-text">&#160;</div>
